@@ -27,11 +27,10 @@ const loadingNews = category_id=>{
 }
 
 const displayingNews = catagories =>{
-    
     const newsExploring = document.getElementById('news-exploring')
     newsExploring.innerHTML='';
     catagories.forEach(catagory => {
-        console.log(catagory);
+        // console.log(catagory);
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
     newsDiv.innerHTML=`
@@ -50,10 +49,14 @@ const displayingNews = catagories =>{
                 <div class="ms-4 mt-4">
                 <p><i class="fa-solid fa-eye pe-1"></i>${catagory.total_view}</p>
                 </div>
+
                 <div class="ms-4 ps-4 mt-4">
-                <i class="fa-solid fa-arrow-right fs-3 text-primary"></i>
+                
+                <i  onclick="loadDetailsNews('${catagory._id}')"  class="fa-solid fa-arrow-right fs-3 text-primary" data-bs-toggle="modal" data-bs-target="#displayDetailsNews"></i>
                 </div>
               </div>
+
+
               <div>
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star"></i>
@@ -66,8 +69,30 @@ const displayingNews = catagories =>{
     `
     newsExploring.appendChild(newsDiv);
     })
+
     
 }
 
+const loadDetailsNews = catagory_id =>{
+    const url = `https://openapi.programming-hero.com/api/news/${catagory_id}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayDetailsNews(data.data[0]))
+}
+
+const displayDetailsNews = catagory =>{
+    console.log(catagory);
+    const detailsNewsExplore = document.getElementById('displayDetailsNewsLabel');
+    detailsNewsExplore.innerText= catagory.title;
+
+    const BodyText = document.getElementById('body-area');
+    BodyText.innerHTML = `
+    <p>Author Name: ${catagory.author ? catagory.author.name: 'No Author Name Found'}</p>
+    <p>Published Date: ${catagory.author ? catagory.author.published_date: 'No Publish Date Found'}</p>
+    <p>Total View: ${catagory.total_view ? catagory.total_view: 'Total View Not Found'}</p>
+    <p>Full News: ${catagory.details ? catagory.details: 'News Not Found'}</p>
+    `
+
+}
 
 loadingNav()
