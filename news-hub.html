@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>News Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/ec9472d3ee.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Poppins:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    
+<script src="https://kit.fontawesome.com/ec9472d3ee.js" crossorigin="anonymous"></script>
     
     
     <style>
@@ -16,18 +18,22 @@
           font-size: 25px;
         }
         .nav-link{
-          font-size: 22px;
+          font-size: 25px;
         }
-        
+        .emni{
+          font-family: 'Courgette', cursive;;
+        }
     </style>
   </head>
-  <body class="container mt-4 main-body">
+
+
+  <body class="container mt-4 main-body emni">
     <header class="main-body">
         <!-- navigiation bar-1 start -->
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
               <div>
-                <a class="navbar-brand text-primary" href="#"><span class="border border-white bg-primary p-2 rounded text-light">News</span> Hub</a>
+                <a class="nav-font navbar-brand text-primary" href="#"><span class="border border-white bg-primary p-2 rounded text-light">News</span> Hub</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -56,17 +62,37 @@
           </nav> 
       </section>
 
+      <!--Number of total data found  -->
+      <section>
+        <div  class="mb-3 mt-4">
+          
+          <input id="data-found" type="email" class="form-control fs-4" id="exampleFormControlInput1" placeholder="Total Data Found">
+        </div>
+      </section>
+
 
       <section >
-        <div id="news-exploring" class="row row-cols-1 row-cols-md-3 g-4" style="max-width: 1300px;">
+        <div id="news-exploring" class="row row-cols-1 row-cols-md-3 g-4 rounded" style="max-width: 1350px;">
           
         </div>
         
         
       </section>
 
+      <!-- toggle Spinner  -->
+
+      <section id="loader" class="d-none">
+        <div style="height:400px" class="d-flex justify-content-center align-items-center">
+            <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+      </section>
+
+ 
+      <!-- Button trigger modal -->
 <section>
-  <!-- Button trigger modal -->
+ 
 
 
 <!-- Modal -->

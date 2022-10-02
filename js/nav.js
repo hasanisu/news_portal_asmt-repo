@@ -3,6 +3,7 @@ const loadingNav = async() =>{
     fetch(url)
     .then(res => res.json())
     .then(data => displayNav(data.data.news_category))
+    .catch(error => console.log(error)) 
 }
 
 const displayNav = catagories =>{
@@ -16,14 +17,19 @@ const displayNav = catagories =>{
         <a onclick="loadingNews('${catagory.category_id}')" class="text-decoration-none" href="#">${catagory.category_name}</a>
         `
         catagoryArea.appendChild(creatMenu);
+        
     })
+    toggleSpiner(true);
+    
 } 
 
-const loadingNews = category_id=>{
+const loadingNews = category_id =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     fetch(url)
     .then(res => res.json())
     .then(data => displayingNews(data.data))
+
+   
 }
 
 const displayingNews = catagories =>{
@@ -34,8 +40,8 @@ const displayingNews = catagories =>{
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
     newsDiv.innerHTML=`
-    <div class="card">
-              <img style="max-height: 500px;" src="${catagory.thumbnail_url}" class="card-img-top" alt="...">
+    <div class="card style ="max-width: 200px">
+              <img src="${catagory.thumbnail_url}" class="card-img-top img-thumbnail rounded" alt="...">
               <div class="card-body">
                 <h5 class="card-title">${catagory.title}</h5>
                 <p class="text-truncate card-text">${catagory.details}</p>
@@ -68,16 +74,37 @@ const displayingNews = catagories =>{
             </div>
     `
     newsExploring.appendChild(newsDiv);
+    
     })
 
-    
+   const length = catagories.length;
+if(catagories.length >= 1){
+    const dataFound = document.getElementById('data-found');
+    dataFound.value = length + ' ' +'News Available';
 }
+else{
+    const dataFound = document.getElementById('data-found');
+    dataFound.value = 'No News Available';
+    // console.log(length, 'No News Available' )
+}
+
+    
+
+    toggleSpiner(false); 
+}
+
+
+
+
+
+
 
 const loadDetailsNews = catagory_id =>{
     const url = `https://openapi.programming-hero.com/api/news/${catagory_id}`
     fetch(url)
     .then(res => res.json())
     .then(data => displayDetailsNews(data.data[0]))
+    .catch(error => console.log(error)) 
 }
 
 const displayDetailsNews = catagory =>{
@@ -87,12 +114,23 @@ const displayDetailsNews = catagory =>{
 
     const BodyText = document.getElementById('body-area');
     BodyText.innerHTML = `
-    <p>Author Name: ${catagory.author ? catagory.author.name: 'No Author Name Found'}</p>
-    <p>Published Date: ${catagory.author ? catagory.author.published_date: 'No Publish Date Found'}</p>
-    <p>Total View: ${catagory.total_view ? catagory.total_view: 'Total View Not Found'}</p>
-    <p>Full News: ${catagory.details ? catagory.details: 'News Not Found'}</p>
+    <p><span class="fw-semibold">Author Name:</span> ${catagory.author ? catagory.author.name: 'No Author Name Found'}</p>
+    <p><span class="fw-semibold">Published Date:</span> ${catagory.author ? catagory.author.published_date: 'No Publish Date Found'}</p>
+    <p><span class="fw-semibold">Total View:</span> ${catagory.total_view ? catagory.total_view: 'Total View Not Found'}</p>
+    <p><span class="fw-semibold">Detail News:</span> ${catagory.details ? catagory.details: 'News Not Found'}</p>
     `
+    
+}
 
+// spiner
+const toggleSpiner = isLoading =>{
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('d-none');
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
 }
 
 loadingNav()
