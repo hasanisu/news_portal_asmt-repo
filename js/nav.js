@@ -28,16 +28,20 @@ const loadingNews = category_id =>{
     fetch(url)
     .then(res => res.json())
     .then(data => displayingNews(data.data))
-
-   
+    .catch(error => console.log(error)) 
 }
 
 const displayingNews = catagories =>{
+
     const newsExploring = document.getElementById('news-exploring')
     newsExploring.innerHTML='';
     catagories.forEach(catagory => {
-        // console.log(catagory);
-    const newsDiv = document.createElement('div');
+       
+       
+        
+    
+    
+        const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
     newsDiv.innerHTML=`
     <div class="card style ="max-width: 200px">
@@ -85,8 +89,10 @@ if(catagories.length >= 1){
 else{
     const dataFound = document.getElementById('data-found');
     dataFound.value = 'No News Available';
-    // console.log(length, 'No News Available' )
+    
 }
+
+
 
     
 
