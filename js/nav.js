@@ -32,16 +32,10 @@ const loadingNews = category_id =>{
 }
 
 const displayingNews = catagories =>{
-
     const newsExploring = document.getElementById('news-exploring')
     newsExploring.innerHTML='';
     catagories.forEach(catagory => {
-       
-       
-        
-    
-    
-        const newsDiv = document.createElement('div');
+    const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
     newsDiv.innerHTML=`
     <div class="card style ="max-width: 200px">
