@@ -14,7 +14,7 @@ const displayNav = catagories =>{
         creatMenu.classList.add('text-sm-center');
         creatMenu.classList.add('nav-link');
         creatMenu.innerHTML=`
-        <a onclick="loadingNews('${catagory.category_id}')" class="text-decoration-none" href="#">${catagory.category_name}</a>
+        <a onclick="loadingNews('${catagory.category_id}')" class="text-decoration-none text-dark" href="#">${catagory.category_name}</a>
         `
         catagoryArea.appendChild(creatMenu);
         
