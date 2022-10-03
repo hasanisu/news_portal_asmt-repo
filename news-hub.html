@@ -6,28 +6,16 @@
     <title>News Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Poppins:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://kit.fontawesome.com/ec9472d3ee.js" crossorigin="anonymous"></script>
     
-<script src="https://kit.fontawesome.com/ec9472d3ee.js" crossorigin="anonymous"></script>
     
     
-    <style>
-        .main-body{
-            background-color: rgba(198, 191, 191, 0.983);
-        }
-        .nav-font{
-          font-size: 25px;
-        }
-        .nav-link{
-          font-size: 25px;
-        }
-        .emni{
-          font-family: 'Courgette', cursive;;
-        }
-    </style>
   </head>
 
 
-  <body class="container mt-4 main-body emni">
+  <body class="container mt-4 main-body font-style">
     <header class="main-body">
         <!-- navigiation bar-1 start -->
         <nav class="navbar navbar-expand-lg ">
@@ -41,11 +29,12 @@
               <div class="collapse navbar-collapse position-relative position-absolute top-0 end-0" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active text-primary fw-semibold" aria-current="page" href="#">News</a>
+                    <a class="nav-link active text-primary fw-semibold" aria-current="page" href="news-hub.html">News</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="blogs.html">Blog</a>
                   </li>
+                  <img class=" rounded-circle img-profile" src="https://c8.alamy.com/zooms/9/2b89e1aaee5c4933b008115f90c561e5/kfeafb.jpg" alt="">
                 </ul>
               </div>
             </div>
@@ -70,6 +59,28 @@
         </div>
       </section>
 
+
+      <section>
+        <div>
+          <div class="d-flex"> 
+            
+            
+           
+            <div class="input-group mb-3 mt-4 w-25 ">
+              <label class="fs-5 mx-2" for="">Sort By Views:</label>
+              <select class="form-select rounded" id="inputGroupSelect01">
+                <option selected>Default</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+           
+          </div>
+        </div>
+      </section>
+
+      <!-- news views -->
 
       <section >
         <div id="news-exploring" class="row row-cols-1 row-cols-md-3 g-4 rounded" style="max-width: 1350px;">
